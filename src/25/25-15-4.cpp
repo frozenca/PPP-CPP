@@ -14,7 +14,11 @@ void* operator new[](std::size_t sz) {
 }
 
 void operator delete[](void* ptr) noexcept {
-    return pool.deallocate(ptr, 500);
+    pool.deallocate(ptr, 500);
+}
+
+void operator delete[](void* ptr, std::size_t sz) noexcept {
+    pool.deallocate(ptr, sz);
 }
 
 int main() {
